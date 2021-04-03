@@ -1,6 +1,11 @@
+
+
+
 ## Setup
 
-create a virtual environment
+
+
+Create a virtual environment
 
 Download the repository 
 
@@ -18,11 +23,18 @@ Sign up to Mongo Atlas (Optional)
 
 If you are using Mongo you will need to replace FAQ and KB as your collections if you don't name yours that. Don't forget to whitelist your IP address otherwise you will constantly receive a timeout message
 
+
+
+
 To run the code type 
 
 ```jsx
 uvicorn FileName:app —reload
 ```
+
+
+
+
 
 To make your endpoint accesible to an external application you will need Ngrok. Once signed up you will need to paste the URL into Watson.
 
@@ -33,6 +45,11 @@ Ensure that Ngrok is pointing to the same port as your uvicorn instance by addin
 Question and Answering models provided by HuggingFace 
 
 [https://huggingface.co/](https://huggingface.co/)
+
+
+
+
+
 
 ## **Use case**
 
@@ -52,7 +69,7 @@ The two use cases are simple but distinct:
 
 ![https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png](https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png)
 
-###**For KnowledgeBase answers:**
+### **For KnowledgeBase answers:**
 
 - In my MongoDB database I’m storing a few things:
 - The link to the where the information is located,
@@ -71,23 +88,21 @@ These are usually stored in pretty standard question and answer pairs so why do 
 
 ![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png](https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
 
-###**MongoDB setup**
+### **MongoDB setup**
 
 I've used MongoDB as it's a fairly simple and easy way to scale and add answer but there's nothing stopping you from implementing a simpe dictionary directly in the Python code if you want to remove this step. 
 
 Setup is relatively simple, using Pymongo to connect to the database and do a search you can connect your instance in Mongo DB Atlas and get the code specific to your database as you follow the setup through. 
 
 
-###**In Watson**
+### **In Watson**
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
-https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png
 
 ![https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png](https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png)
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
-
 
 
 ![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png](https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png)
@@ -100,7 +115,11 @@ If not then that means FAQ is the higher scoring of the two and we move on to pr
 
 If none of those conditions are satisfied then we fall back to the standard "I didn't understand your question, the whole process even with Ngrok takes a fraction of a second on a few dozen results.
 
-The Schema of everything returned
+
+
+
+
+## The Schema of everything returned
 
 ![https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png](https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png)
 
