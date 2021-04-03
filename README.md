@@ -61,12 +61,15 @@ The two use cases are simple but distinct:
 
 I’m returning more than just the answer and the score to Watson as I want to write a response that’s a bit more interactive feeling to an end user I want them to understand a bit more about why I’ve returned the answer that I have. Primarily because sometimes the answer isn’t right and I want it to be obvious that something is wrong but also to help users understand why they have received the answer they have. I am only attempting this fall back search to try and brute force a good answer but I've already not been succesful in my Virtual Assistant. 
 
+![https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png](https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png)
+
+
 
 **For FAQ answers:**
 
 These are usually stored in pretty standard question and answer pairs so why do anything different?
 
-![https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png](https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png)
+![https://postimg.cc/kBWCM7Mx](https://postimg.cc/kBWCM7Mx)
 
 **MongoDB setup**
 
@@ -82,16 +85,17 @@ I've chosen to use Watson as it's what I'm most familiar with. I set the keys an
 ![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png]([https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
+![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png](https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png)
 
-![https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png](https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png)
 
 If not then that means FAQ is the higher scoring of the two and we move on to provide that answer if that score is also above 35%
 
-![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png](https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png)
-
-If none of those conditions are satisfied then we fall back to the standard
+![https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png](https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png)
 
 
+If none of those conditions are satisfied then we fall back to the standard "I didn't understand your question, the whole process even with Ngrok takes a fraction of a second on a few dozen results.
+
+The Schema of everything returned
 
 ![https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png](https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png)
 
