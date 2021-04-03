@@ -48,7 +48,13 @@ The two use cases are simple but distinct:
 
 2) You have an intent but none of your answers have been triggered by their entities. In this instance you can filter by align to your intent to shorten down the data to work through.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a143dfbc-ff71-4fb3-8fe2-4a5362de4293/Screenshot_2021-03-18_at_15.01.23.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a143dfbc-ff71-4fb3-8fe2-4a5362de4293/Screenshot_2021-03-18_at_15.01.23.png)
+
+
+
+
+
+
+![https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png](https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png)
 
 **For KnowledgeBase answers:**
 
@@ -59,13 +65,13 @@ The two use cases are simple but distinct:
 
 I’m returning more than just the answer and the score to Watson as I want to write a response that’s a bit more interactive feeling to an end user I want them to understand a bit more about why I’ve returned the answer that I have. Primarily because sometimes the answer isn’t right and I want it to be obvious that something is wrong but also to help users understand why they have received the answer they have. I am only attempting this fall back search to try and brute force a good answer but I've already not been succesful in my Virtual Assistant. 
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ebb6560-537d-49e6-95ba-2391b22217ae/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0ebb6560-537d-49e6-95ba-2391b22217ae/Untitled.png)
+![https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png](https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png)
 
 **For FAQ answers:**
 
 These are usually stored in pretty standard question and answer pairs so why do anything different?
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/69061d08-37e5-4073-8ec0-b80f3d568bd3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/69061d08-37e5-4073-8ec0-b80f3d568bd3/Untitled.png)
+![https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png](https://i.postimg.cc/rFmpx4Yr/Screenshot-2021-04-02-at-21-07-09.png)
 
 **MongoDB setup**
 
@@ -83,14 +89,14 @@ To enable Watson to connect with the code running locally on your computer you'r
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c21b25c6-88a4-43f5-883e-1860207b4ec1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c21b25c6-88a4-43f5-883e-1860207b4ec1/Untitled.png)
+![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png]
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab295a05-ba53-44e7-95ab-475cf04e0ccf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab295a05-ba53-44e7-95ab-475cf04e0ccf/Untitled.png)
+![https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png]
 
 If not then that means FAQ is the higher scoring of the two and we move on to provide that answer if that score is also above 35%
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e83183ec-5751-4750-8f43-148e5c7c84c7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e83183ec-5751-4750-8f43-148e5c7c84c7/Untitled.png)
+![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png]
 
 If none of those conditions are satisfied then we fall back to the standard
