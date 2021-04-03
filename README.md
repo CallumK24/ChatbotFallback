@@ -82,9 +82,14 @@ Setup is relatively simple, using Pymongo to connect to the database and do a se
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
-![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png]([https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
+https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png
+
+![https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png](https://i.postimg.cc/Hs1sVK1V/Screenshot-2021-04-03-at-08-57-16.png)
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
+
+
+
 ![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png](https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png)
 
 
