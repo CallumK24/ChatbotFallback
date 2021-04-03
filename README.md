@@ -69,7 +69,7 @@ I’m returning more than just the answer and the score to Watson as I want to w
 
 These are usually stored in pretty standard question and answer pairs so why do anything different?
 
-![https://postimg.cc/kBWCM7Mx](https://postimg.cc/kBWCM7Mx)
+![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png](https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
 
 **MongoDB setup**
 
