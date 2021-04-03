@@ -2,11 +2,37 @@
 
 create a virtual environment
 
+Download the repository 
+
+```
+git clone https://github.com/CallumK24/ChatbotFallback.git
+```
+
+```jsx
 pip install -r requirements.txt
+```
 
-Sign up to Mongo (Optional)
+Sign up to Mongo Atlas (Optional)
 
-To run the code type Uvicorn FileName:app —reload
+[https://www.mongodb.com/](https://www.mongodb.com/) 
+
+If you are using Mongo you will need to replace FAQ and KB as your collections if you don't name yours that. Don't forget to whitelist your IP address otherwise you will constantly receive a timeout message
+
+To run the code type 
+
+```jsx
+uvicorn FileName:app —reload
+```
+
+To make your endpoint accesible to an external application you will need Ngrok. Once signed up you will need to paste the URL into Watson.
+
+[https://ngrok.com/](https://ngrok.com/) 
+
+Ensure that Ngrok is pointing to the same port as your uvicorn instance by adding http 8000 to your ./ngrok command
+
+Question and Answering models provided by HuggingFace 
+
+[https://huggingface.co/](https://huggingface.co/)
 
 ## **Use case**
 
@@ -57,14 +83,14 @@ To enable Watson to connect with the code running locally on your computer you'r
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64c66d05-b7c8-49ec-8043-7baa76b4f2ec/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/64c66d05-b7c8-49ec-8043-7baa76b4f2ec/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c21b25c6-88a4-43f5-883e-1860207b4ec1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c21b25c6-88a4-43f5-883e-1860207b4ec1/Untitled.png)
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/767d881f-faa7-4e9a-b453-16f7ec7b050b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/767d881f-faa7-4e9a-b453-16f7ec7b050b/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab295a05-ba53-44e7-95ab-475cf04e0ccf/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ab295a05-ba53-44e7-95ab-475cf04e0ccf/Untitled.png)
 
 If not then that means FAQ is the higher scoring of the two and we move on to provide that answer if that score is also above 35%
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cdeace7e-38b1-491a-a70c-0d8db1c18ba3/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cdeace7e-38b1-491a-a70c-0d8db1c18ba3/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e83183ec-5751-4750-8f43-148e5c7c84c7/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e83183ec-5751-4750-8f43-148e5c7c84c7/Untitled.png)
 
 If none of those conditions are satisfied then we fall back to the standard
