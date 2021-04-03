@@ -50,10 +50,6 @@ The two use cases are simple but distinct:
 
 
 
-
-
-
-
 ![https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png](https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png)
 
 **For KnowledgeBase answers:**
@@ -65,7 +61,6 @@ The two use cases are simple but distinct:
 
 I’m returning more than just the answer and the score to Watson as I want to write a response that’s a bit more interactive feeling to an end user I want them to understand a bit more about why I’ve returned the answer that I have. Primarily because sometimes the answer isn’t right and I want it to be obvious that something is wrong but also to help users understand why they have received the answer they have. I am only attempting this fall back search to try and brute force a good answer but I've already not been succesful in my Virtual Assistant. 
 
-![https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png](https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png)
 
 **For FAQ answers:**
 
@@ -79,24 +74,29 @@ I've used MongoDB as it's a fairly simple and easy way to scale and add answer b
 
 Setup is relatively simple, using Pymongo to connect to the database and do a search you can connect your instance in Mongo DB Atlas and get the code specific to your database as you follow the setup through. 
 
-Ngrok setup. 
-
-To enable Watson to connect with the code running locally on your computer you're going to need to use Ngrok to connect. The setup is really easy just make sure that your port is pointing to the same as 
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1424a06e-7afc-42fb-9d75-7097818df1b6/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1424a06e-7afc-42fb-9d75-7097818df1b6/Untitled.png)
 
 **In Watson**
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
-![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png]
+![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png]([https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
 
 Then configuring responses I check to see if the generated HF Transformer score is higher than the FAQ score and that the Answer score is higher than 35%
 
-![https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png]
+![https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png](https://i.postimg.cc/BvWZrVZT/Screenshot-2021-04-03-at-09-03-00.png)
 
 If not then that means FAQ is the higher scoring of the two and we move on to provide that answer if that score is also above 35%
 
-![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png]
+![https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png](https://i.postimg.cc/nLvVpGM6/Screenshot-2021-04-03-at-09-03-16.png)
 
 If none of those conditions are satisfied then we fall back to the standard
+
+
+
+![https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png](https://i.postimg.cc/zB8zBHg3/Screenshot-2021-04-02-at-21-02-14.png)
+
+
+
+
+
+
