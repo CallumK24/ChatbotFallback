@@ -52,7 +52,7 @@ The two use cases are simple but distinct:
 
 ![https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png](https://i.postimg.cc/rwRFYkTy/Screenshot-2021-03-18-at-15-01-23.png)
 
-**For KnowledgeBase answers:**
+### **For KnowledgeBase answers:**
 
 - In my MongoDB database I’m storing a few things:
 - The link to the where the information is located,
@@ -65,20 +65,20 @@ I’m returning more than just the answer and the score to Watson as I want to w
 
 
 
-**For FAQ answers:**
+### **For FAQ answers:**
 
 These are usually stored in pretty standard question and answer pairs so why do anything different?
 
 ![https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png](https://i.postimg.cc/yYb8PNwr/Screenshot-2021-04-02-at-21-07-59.png)
 
-**MongoDB setup**
+### **MongoDB setup**
 
 I've used MongoDB as it's a fairly simple and easy way to scale and add answer but there's nothing stopping you from implementing a simpe dictionary directly in the Python code if you want to remove this step. 
 
 Setup is relatively simple, using Pymongo to connect to the database and do a search you can connect your instance in Mongo DB Atlas and get the code specific to your database as you follow the setup through. 
 
 
-**In Watson**
+### **In Watson**
 
 I've chosen to use Watson as it's what I'm most familiar with. I set the keys and values I want to send. I'm setting the subject as a context here but you can either select it as an entity or an intent using @Entity or intents[0].intent
 
